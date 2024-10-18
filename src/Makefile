@@ -1,8 +1,8 @@
-# Compiler
+# Compiler and flags
 CC = gcc
+CFLAGS = -I../include
 
 # Directories
-INCLUDES=../include
 LIB_DIR =../lib
 BIN_DIR =../bin
 
@@ -19,13 +19,14 @@ $(LIB_DIR):
 $(BIN_DIR):
 	@mkdir -p $(BIN_DIR)
 
-# Rule to build target 
-$(TARGET): main.c $(LIB_DIR)/primes.o
-	$(CC) -I$(INCLUDES) -o $@ $< $(LIB_DIR)/primes.o
+# Rule to build target from lib module(s)
+LIBS = $(LIB_DIR)/primes.o
+$(TARGET): main.c $(LIBS)
+	$(CC) $(CFLAGS) -o $@ $< $(LIBS)
 
-# Rule(s) to build module(S)
+# Rule(s) to compile module from dependencies
 $(LIB_DIR)/primes.o: primes.c
-	$(CC) -I$(INCLUDES) -o $@ -c $<
+	$(CC) $(CFLAGS) -o $@ -c $<
 
 # Clean rule: remove object files and binaries
 clean:
