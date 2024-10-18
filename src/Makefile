@@ -29,7 +29,7 @@ $(LIB_DIR)/primes.o: primes.c
 
 # Clean rule: remove object files and binaries
 clean:
-	rm -rf $(LIB_DIR) $(BIN_DIR)
+	rm -f $(LIB_DIR)/*.o $(BIN_DIR)/*.exe
 
 # Phony targets (targets that aren't actual files)
 .PHONY: all clean
