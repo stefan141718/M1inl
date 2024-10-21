@@ -1,5 +1,5 @@
-#ifndef PRIMES_H
-#define PRIMES_H
+#ifndef _PRIMES_H_
+#define _PRIMES_H_
 
 char *iarr_to_str(char *buf, int *iarr, int ialen);
 int get_next_prime(int prime);
